@@ -1,14 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "lambda_nodejs" ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+name: deploy to lambda
+on: [push]
 jobs:
   deploy_source:
     name: build and deploy lambda
@@ -37,6 +28,6 @@ jobs:
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: eu-west-3
+          aws_region: eu-west-1
           function_name: my-function
           zip_file: bundle.zip
